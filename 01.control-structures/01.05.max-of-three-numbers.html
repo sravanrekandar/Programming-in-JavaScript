@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html class="scenarios">
+<head>
+    <link href="../css/main.css" rel="stylesheet" type="text/css" />
+	<title>Max of three numbers</title>
+</head>
+<body>
+    <div  class="page-container border-radius">
+        <h1>SRAVAN/SCE0105/Max of three numbers</h1>
+        <form id="myform">
+			<table>
+				<tr>
+					<td><label for="input1">Number One:</label></td>
+					<td><input type="text" name="input1" class="border-radius"> <br /></td>
+				</tr>
+				<tr>
+					<td><label for="input2">Number Two:</label></td>
+					<td><input type="text" name="input2" class="border-radius"> <br /></td>
+				</tr>
+				<tr>
+					<td><label for="input3">Number Three:</label></td>
+					<td><input type="text" name="input3" class="border-radius"> <br /></td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td><input type="submit" value="Find the Max number"  class="border-radius" /></td>
+				</tr>
+			</table>
+        </form>
+		<div class="description">
+			<h2>Description</h2>
+			<p>Find the max of the given three numbers.<br />
+			(No Validation code included)</p>
+		</div>
+    </div>
+
+<script>
+"use strict";
+var myForm, myInput1, myInput2, myInput3;
+
+function check() {
+	var myNum1 = myInput1.value,
+		myNum2 = myInput2.value,
+		myNum3 = myInput3.value;
+
+	myNum1 = Number(myNum1);
+	myNum2 = Number(myNum2);
+	myNum3 = Number(myNum3);
+
+	if (myNum1 > myNum2) {
+		if (myNum1 > myNum3) {
+			alert("Max number : " + myNum1);
+		} else {
+			alert("Max number : " + myNum3);
+		}
+	} else {
+		if (myNum2 > myNum3) {
+			alert("Max number : " + myNum2);
+		} else {
+			alert("Max number : " + myNum3);
+		}
+	}
+	return false;
+}
+
+function init() {
+	myForm = document.getElementById("myform");
+	myInput1 = myForm.input1;
+	myInput2 = myForm.input2;
+	myInput3 = myForm.input3;
+	myForm.onsubmit = check;
+}
+
+window.onload = init;
+</script>
+</body>
+</html>

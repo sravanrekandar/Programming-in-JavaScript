@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html class="scenarios">
+<head>
+    <link href="../css/main.css" rel="stylesheet" type="text/css" />
+	<title>Max of two numbers</title>
+</head>
+<body>
+    <div  class="page-container border-radius">
+        <h1>SRAVAN/SCE0103/Max of two numbers</h1>
+        <form id="myform">
+			<table>
+				<tr>
+					<td><label for="input1">Enter first Value:</label></td>
+					<td><input type="text" name="input1" class="border-radius"> <br /></td>
+				</tr>
+				<tr>
+					<td><label for="input2">Enter second Value:</label></td>
+					<td><input type="text" name="input2" class="border-radius"> <br /></td>
+				</tr>
+				<tr>
+					<td><input type="submit" value="Find the Max number"  class="border-radius" /></td>
+					<td></td>
+				</tr>
+			</table>
+        </form>
+		<div class="description">
+			<h2>Description</h2>
+			<p>Find the max of the given two numbers.<br/>
+			Create a form that has two input fields and a submit button.<br/>
+			When the submit button is pressed,you should display an alert with the following conditions:<br/>
+			a. If both of the text fields are empty, "No numbers given"<br/>
+			b. If any of the fields are not numerics, "Only numberics are allowed"<br/>
+			c. If one field is empty and the other is a number, Display the given number<br />
+			d. If both the fields are numbers, Display the maximum number</p>
+		</div>
+    </div>
+
+<script>
+"use strict";
+var myForm, myInput1, myInput2;
+
+function check() {
+	var myNum1 = myInput1.value,
+		myNum2 = myInput2.value;
+	if (myNum1 === "" && myNum2 === "") {
+		alert("No numbers given");
+	} else if (isNaN(myNum1) || isNaN(myNum2)) {
+		alert("Only Numbers are allowed");
+	} else if ((myNum1 !== "" && !isNaN(myNum1)) && myNum2 === "") {
+		alert(myNum1);
+	} else if (myNum1 === "" && (myNum2 !== "" && !isNaN(myNum2))) {
+		alert(myNum2);
+	} else {
+		myNum1 = Number(myNum1);
+		myNum2 = Number(myNum2);
+		if (myNum1 > myNum2) {
+			alert("Max number : " + myNum1);
+		} else {
+			alert("Max number : " + myNum2);
+		}
+	}
+	return false;
+}
+
+function init() {
+	myForm = document.getElementById("myform");
+	myInput1 = myForm.input1;
+	myInput2 = myForm.input2;
+	myForm.onsubmit = check;
+}
+
+window.onload = init;
+</script>
+</body>
+</html>

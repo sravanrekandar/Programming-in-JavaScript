@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html class="scenarios">
+<head>
+    <link href="../css/main.css" rel="stylesheet" type="text/css" />
+	<title>Age Group</title>
+</head>
+<body>
+    <div  class="page-container border-radius">
+        <h1>SRAVAN/SCE0109/Finding the age group</h1>
+        <form id="myForm">
+			<table>
+				<tr>
+					<td><label for="age">Age:</label></td>
+					<td><input type="text" name="age" class="border-radius"> <br /></td>
+				</tr>
+				<tr>
+					<td><label for="agegroup">Age:</label></td>
+					<td><input type="text" name="agegroup" class="border-radius" disabled> <br /></td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td><input type="submit" value="Find the age group"  class="border-radius" /></td>
+				</tr>
+			</table>
+        </form>
+		<div class="description">
+			<h2>Description</h2>
+			<p>Find the age group.</p>
+		</div>
+    </div>
+
+<script>
+"use strict";
+var myForm, ageInput, ageGroup;
+
+function check() {
+
+	var age = ageInput.value,
+		agegroup = "";
+	if (isNaN(age)) {
+		alert("Only numbers are allowed");
+		return false;
+	}
+
+	age = Number(age);
+	if (age < 5) {
+		agegroup = "Infants";
+	} else if (age < 13) {
+		agegroup = "Childhood";
+	} else if (age < 20) {
+		agegroup = "Teen age";
+	} else if (age < 40) {
+		agegroup = "Adult";
+	} else if (age < 60) {
+		agegroup = "Middle age";
+	} else {
+		agegroup = "old age";
+	}
+
+	ageGroup.value = agegroup;
+
+	return false;
+}
+
+function init() {
+	myForm = document.getElementById("myForm");
+	ageInput = myForm.age;
+	ageGroup = myForm.agegroup;
+	myForm.onsubmit = check;
+}
+
+window.onload = init;
+</script>
+</body>
+</html>

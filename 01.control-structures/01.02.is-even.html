@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html class="scenarios">
+<head>
+    <link href="../css/main.css" rel="stylesheet" type="text/css" />
+	<title>Checking Even or Odd</title>
+</head>
+<body>
+    <div  class="page-container border-radius">
+        <h1>SRAVAN/SCE0102/is Even</h1>
+        <form id="myform">
+            <label for="input">Enter a Value:</label>
+            <input type="text" name="input" class="border-radius">
+            <input type="submit" value="Check Even/Odd"  class="border-radius" />
+            
+        </form>
+        <div class="description">
+            <h2>Description</h2>
+            <p>Check the given number Even or Odd.<br/>
+            Create a form that has a text input and a button-'Check Even or Odd'.<br/>
+        When you click the button, you should alert a messege box with the following conditions:<br/>
+            a. If the text field is empty, "Number field is empty"<br/>
+            b. If the text field contains non numeric text, "Only Numbers are allowed"<br/>
+            c. If the text field contains number, "Even" / "Odd"</p>
+        </div>
+    </div>
+
+<script>
+"use strict";
+var myForm, myInput;
+
+function check() {
+    var myNum = myInput.value;
+    if (myNum === "") {
+        alert("The Number field is empty");
+    } else if (isNaN(myNum)) {
+        alert("Only Numbers are allowed");
+    } else {
+        // Parsing the value to integer
+        myNum = parseInt(myNum, 10);
+        // Checking the given number's divisibility by 2
+        if (myNum % 2 === 0) {
+            alert("The given number is an even Number");
+        } else {
+            alert("The given number is an odd Number");
+        }
+    }
+    return false;
+}
+
+function init() {
+    myForm = document.getElementById("myform");
+    myInput = myForm.input;
+    myForm.onsubmit = check;
+}
+
+window.onload = init;
+</script>
+</body>
+</html>

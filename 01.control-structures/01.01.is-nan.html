@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html class="scenarios">
+<head>
+    <link href="../css/main.css" rel="stylesheet" type="text/css" />
+	<title>isNaN Example</title>
+</head>
+<body>
+    <div  class="page-container border-radius">
+        <h1>SRAVAN/SCE0101/isNaN Example</h1>
+        <form id="myform">
+            <label for="input">Enter a Value:</label>
+            <input type="text" name="input" class="border-radius">
+            <input type="submit" value="Check"  class="border-radius" />
+            
+        </form>
+		<div class="description">
+			<h2>Description</h2>
+			<p>An Example of isNaN() [is Not a Number function]</p>
+		</div>
+    </div>
+
+<script>
+"use strict";
+var myForm, myInput;
+
+function check() {
+	var myNum = myInput.value;
+	if (isNaN(myNum)) {
+		alert(myNum + " is not a number");
+	} else {
+		alert(myNum + " is a number");
+	}
+	return false;
+}
+
+function init() {
+	myForm = document.getElementById("myform");
+	myInput = myForm.input;
+	myForm.onsubmit = check;
+}
+
+window.onload = init;
+</script>
+</body>
+</html>

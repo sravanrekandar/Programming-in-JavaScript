@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html class="scenarios">
+<head>
+    <link href="../css/main.css" rel="stylesheet" type="text/css" />
+	<title>Student Form</title>
+</head>
+<body>
+    <div  class="page-container border-radius">
+        <h1>SRAVAN/SCE0107/Student Form</h1>
+        <form id="student-form">
+			<table>
+				<tr>
+					<td><label for="stdname">Name:</label></td>
+					<td><input type="text" name="stdname" class="border-radius"> <br /></td>
+				</tr>
+				<tr>
+					<td><label for="stdid">Id:</label></td>
+					<td><input type="text" name="stdid" class="border-radius"> <br /></td>
+				</tr>
+				<tr>
+					<td><label for="stdmarks1">Marks1*:</label></td>
+					<td><input type="text" name="stdmarks1" class="border-radius"> <br /></td>
+				</tr>
+				<tr>
+					<td><label for="stdmarks2">Marks2*:</label></td>
+					<td><input type="text" name="stdmarks2" class="border-radius"> <br /></td>
+				</tr>
+				<tr>
+					<td><label for="stdmarks3">Marks3*:</label></td>
+					<td><input type="text" name="stdmarks3" class="border-radius"> <br /></td>
+				</tr>
+				<tr>
+					<td><label for="stdtotal">Total:</label></td>
+					<td><input type="text" name="stdtotal" class="border-radius" disabled> <br /></td>
+				</tr>
+				<tr>
+					<td><label for="stdpercent">Percentage:</label></td>
+					<td><input type="text" name="stdpercent" class="border-radius" disabled> <br /></td>
+				</tr>
+				<tr>
+					<td><label for="stdgrade">Grade:</label></td>
+					<td><input type="text" name="stdgrade" class="border-radius" disabled> <br /></td>
+				</tr>
+				<tr>
+					<td><label for="stdstatus">Status:</label></td>
+					<td><input type="text" name="stdstatus" class="border-radius" disabled> <br /></td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td><input type="submit" value="Calculate the Grade"  class="border-radius" /></td>
+				</tr>
+			</table>
+        </form>
+		<div class="description">
+			<h2>Description</h2>
+			<p>Find the min of the given three numbers.</p>
+		</div>
+    </div>
+
+<script>
+"use strict";
+var stdForm, stdMarks1, stdMarks2, stdMarks3,
+    stdTotal, stdPercent, stdGrade, stdStatus;
+
+function check() {
+
+	var marks1 = Number(stdMarks1.value),
+		marks2 = Number(stdMarks2.value),
+		marks3 = Number(stdMarks3.value),
+		total, percentage, grade, status;
+	
+	if (isNaN(marks1) || isNaN(marks2) || isNaN(marks3)) {
+		alert("In sufficient data");
+		return false;
+	} else if (marks1<0 || marks1>100 || marks2<0 || marks2>100	|| marks3<0 || marks3>100) {
+		alert("Marks Should be between 0 an 100");
+		return false;
+	}
+	
+	
+	total = marks1 + marks2 + marks3;
+	percentage = ((total / 300)*100).toFixed(2);
+
+	// Grade
+	if (percentage < 50) {
+		grade = "C";
+	} else if (percentage < 60) {
+		grade = "B";
+	} else {
+		grade = "A";
+	}
+
+	// Status (PASS / FAIL)
+	
+	/* type #1
+	if (marks1 >= 35 && marks2 >= 35 && marks3 >= 35) {
+		status = "PASS";
+	} else {
+		status = "FAIL";
+	}
+	*/
+	/* type #2 */
+	if (marks1 < 35 || marks2 < 35 || marks3 < 35) {
+		status = "FAIL";
+	} else {
+		status = "PASS";
+	}
+	
+	
+	// Updating the form
+	stdTotal.value = total;
+	stdPercent.value = percentage;
+	stdGrade.value = grade;
+	stdStatus.value= status;
+	if(status === "FAIL") {
+		stdStatus.style.color = 'red';
+	} else {
+		stdStatus.style.color = '#0f990f';
+	}
+
+	return false;
+}
+
+function init() {
+	stdForm = document.getElementById("student-form");
+	stdMarks1 = stdForm.stdmarks1;
+	stdMarks2 = stdForm.stdmarks2;
+	stdMarks3 = stdForm.stdmarks3;
+	stdTotal = stdForm.stdtotal;
+	stdPercent = stdForm.stdpercent;
+	stdGrade = stdForm.stdgrade;
+	stdStatus = stdForm.stdstatus;
+	stdForm.onsubmit = check;
+}
+
+window.onload = init;
+</script>
+</body>
+</html>
