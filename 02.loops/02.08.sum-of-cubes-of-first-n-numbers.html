@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html class="scenarios">
+<head>
+    <link href="../css/main.css" rel="stylesheet" type="text/css" />
+	<title>Sum of cubes of first n numbers</title>
+</head>
+<body>
+	
+    <div  class="page-container border-radius">
+        <h1>SRAVAN/SCE0208/Sum of cubes of first n numbers</h1>
+		<form id="numbersForm">
+		<table>
+			<tr>
+				<td><label for="num">Enter a Number:</label> </td>
+				<td><input type="text" name="num" id="myinput"  class="border-radius"/></td>
+			</tr>
+			<tr>
+			<td></td>
+				<td>
+				<input type="button" value="Clear" class="border-radius" id="clear" />
+				<input type="submit" value="Print Sum" class="border-radius" /></td>
+				
+			</tr>
+		</table>
+		
+	</form>
+        <div class="description result" id="myDiv">
+			
+		</div>
+		<div class="description">
+			<h2>Description</h2>
+			<p>Sum of cubes of first n numbers</p>
+		</div>
+    </div>
+
+<script>
+"use strict";
+var numForm, myDiv, myInput;
+
+function printSum() {
+	var sum = 0,
+		i,
+		n = isNaN(myInput.value) ? 0 : Number(myInput.value);
+
+	/* sum of first n Natural numbers = n*n*(n+1)*(n+1)/4 */
+	for (i = 1; i <= n; i++) {
+		sum = sum + (i * i * i);
+	}
+	myDiv.innerHTML = "The Sum of cubes of the first " + n + " numbers  = " + sum;
+
+	return false;
+}
+function clearNumbers() {
+	myDiv.innerHTML = "";
+	myInput.value = "";
+	myInput.focus();
+}
+function init() {
+	numForm = document.getElementById("numbersForm");
+	myInput = numForm.myinput;
+	myDiv = document.getElementById("myDiv");
+	numForm.onsubmit = printSum;
+
+	document.getElementById("clear").onclick = clearNumbers;
+}
+
+window.onload = init;
+</script>
+</body>
+</html>

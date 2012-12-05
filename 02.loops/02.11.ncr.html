@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html class="scenarios">
+<head>
+    <link href="../css/main.css" rel="stylesheet" type="text/css" />
+	<title>ncr</title>
+</head>
+<body>
+	
+    <div  class="page-container border-radius">
+        <h1>SRAVAN/SCE0209/NcR</h1>
+		<form id="myForm">
+		<table>
+			<tr>
+				<td><label for="num">n: </label></td>
+				<td><input type="text" name="num" id="inputN"  class="border-radius"/></td>
+			</tr>
+			<tr>
+				<td><label for="inputR">c: </label></td>
+				<td><input type="text" name="inputR" id="inputR"  class="border-radius"/></td>
+			</tr>
+			<tr>
+				<td><label for="ncr">ncr: </label></td>
+				<td><input type="text" name="ncr" id="ncr"  class="border-radius" disabled/></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>
+				<input type="button" value="Clear" class="border-radius" id="clear" />
+				<input type="submit" value="NcR" class="border-radius" /></td>
+				
+			</tr>
+		</table>
+		
+	</form>
+
+		<div class="description">
+			<h2>Description</h2>
+			<p>NcR</p>
+		</div>
+    </div>
+
+<script>
+"use strict";
+var input_n, input_r, result;
+function factorial(num) {
+	var fact = 1, i;
+	for (i = num; i > 0; i--) {
+		fact = fact * i;
+	}
+	return fact;
+}
+function findNcr() {
+	var	n = isNaN(input_n.value) ? 0 : Number(input_n.value),
+		r = isNaN(input_r.value) ? 0 : Number(input_r.value),
+		ncr = 0;
+
+		/* ncr = n!/((n-r)!)* r!)   
+			http://www.purplemath.com/modules/binomial.htm
+		*/
+	ncr = factorial(n) / (factorial(n - r) * factorial(r));
+	result.value = ncr;
+	return false;
+}
+function clearNumbers() {
+	input_n.value = "";
+	input_r.value = "";
+	result.value = "";
+	input_n.focus();
+}
+function init() {
+	input_n = document.getElementById("inputN");
+	input_r = document.getElementById("inputR");
+	result = document.getElementById("ncr");
+
+	document.getElementById("myForm").onsubmit = findNcr;
+	document.getElementById("clear").onclick = clearNumbers;
+}
+
+window.onload = init;
+</script>
+</body>
+</html>

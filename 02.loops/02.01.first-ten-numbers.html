@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html class="scenarios">
+<head>
+    <link href="../css/main.css" rel="stylesheet" type="text/css" />
+	<title>Printing first 10 numbers</title>
+</head>
+<body>
+    <div  class="page-container border-radius">
+        <h1>SRAVAN/SCE0201/Printing first 10 numbers</h1>
+        
+		<div class="description result" id="myDiv"></div>
+		
+		<div class="description">
+			<h2>Description</h2>
+			<p>Find the age group.</p>
+		</div>
+    </div>
+
+<script>
+"use strict";
+var myDiv;
+
+function printNumbers() {
+	myDiv = document.getElementById("myDiv");
+	var str = "", i;
+	for (i = 1; i <= 10; i++) {
+		str += i + " ";
+	}
+	myDiv.innerHTML = str;
+}
+
+window.onload = printNumbers;
+</script>
+</body>
+</html>

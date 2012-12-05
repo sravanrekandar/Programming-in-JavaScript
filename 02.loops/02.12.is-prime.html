@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html class="scenarios">
+<head>
+    <link href="../css/main.css" rel="stylesheet" type="text/css" />
+	<title>isPrime</title>
+</head>
+<body>
+	
+    <div  class="page-container border-radius">
+        <h1>SRAVAN/SCE0209/isPrime</h1>
+		<form id="myForm">
+		<table>
+			<tr>
+				<td><label for="num">n: </label></td>
+				<td><input type="text" name="num" id="inputN"  class="border-radius"/></td>
+			</tr>
+			<tr>
+				<td> </td>
+				<td><input type="text" name="prime" id="prime"  class="border-radius" disabled/></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>
+				<input type="button" value="Clear" class="border-radius" id="clear" />
+				<input type="submit" value="Check Prime" class="border-radius" /></td>
+				
+			</tr>
+		</table>
+		
+	</form>
+
+		<div class="description">
+			<h2>Description</h2>
+			<p>Check the given number is a prime or not</p>
+		</div>
+    </div>
+
+<script>
+"use strict";
+var input_n, result;
+function isPrime(num) {
+	var flag = true, i;
+	for (i = 2; i <= num / 2; i++) {
+
+		if (num % i === 0) {
+			flag = false;
+			break;
+		}
+	}
+
+	return flag;
+}
+function findNcr() {
+	var	n = isNaN(input_n.value) ? 0 : Number(input_n.value),
+		prime;
+	prime = isPrime(n);
+
+	result.value =  prime ? "Prime" : "Not a Prime";
+	return false;
+}
+function clearNumbers() {
+	input_n.value = "";
+	result.value = "";
+	input_n.focus();
+}
+function init() {
+	input_n = document.getElementById("inputN");
+	result = document.getElementById("prime");
+
+	document.getElementById("myForm").onsubmit = findNcr;
+	document.getElementById("clear").onclick = clearNumbers;
+
+}
+window.onload = init;
+</script>
+</body>
+</html>

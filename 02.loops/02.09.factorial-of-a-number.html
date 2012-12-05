@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html class="scenarios">
+<head>
+    <link href="../css/main.css" rel="stylesheet" type="text/css" />
+	<title>Factorial of a number</title>
+</head>
+<body>
+	
+    <div  class="page-container border-radius">
+        <h1>SRAVAN/SCE0209/Factorial of a number</h1>
+		<form id="numbersForm">
+		<table>
+			<tr>
+				<td><label for="num">Enter a Number:</label> </td>
+				<td><input type="text" name="num" id="myinput"  class="border-radius"/></td>
+			</tr>
+			<tr>
+			<td></td>
+				<td>
+				<input type="button" value="Clear" class="border-radius" id="clear" />
+				<input type="submit" value="Factorial" class="border-radius" /></td>
+				
+			</tr>
+		</table>
+		
+	</form>
+        <div class="description result" id="myDiv">
+			
+		</div>
+		<div class="description">
+			<h2>Description</h2>
+			<p>Factorial of a number</p>
+		</div>
+    </div>
+
+<script>
+"use strict";
+var numForm, myDiv, myInput;
+
+function printFactorial() {
+	var fact = 1,
+		i,
+		n = isNaN(myInput.value) ? 0 : Number(myInput.value);
+
+	/* 5! = 5x4x3x2x1, 3! = 3x2x1  */
+	for (i = 1; i <= n; i++) {
+		fact = fact * i;
+	}
+	myDiv.innerHTML = "The factorial of " + n + " = " + fact;
+
+	return false;
+}
+function clearNumbers() {
+	myDiv.innerHTML = "";
+	myInput.value = "";
+	myInput.focus();
+}
+function init() {
+	numForm = document.getElementById("numbersForm");
+	myInput = numForm.myinput;
+	myDiv = document.getElementById("myDiv");
+	numForm.onsubmit = printFactorial;
+
+	document.getElementById("clear").onclick = clearNumbers;
+}
+
+window.onload = init;
+</script>
+</body>
+</html>

@@ -41,7 +41,7 @@ input[type="text"]{
 	
 	font-size: 2.1em;
 }
-input[type="submit"]{
+input[type="submit"], input[type="button"]{
 	height:50px;
 	box-shadow: 2px 2px 1px #aaa;
 	border:none;
@@ -60,6 +60,9 @@ input[type="submit"]:hover{
 input[disabled]{
 	background-color:#fffff0;
 	color:#0f990f;
+}
+.result {
+	background-color: #fff;
 }
 .error{
 	color: red !important;
