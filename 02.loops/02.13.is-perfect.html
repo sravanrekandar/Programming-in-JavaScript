@@ -2,12 +2,12 @@
 <html class="scenarios">
 <head>
     <link href="../css/main.css" rel="stylesheet" type="text/css" />
-	<title>isPrime</title>
+	<title>isPerfect??</title>
 </head>
 <body>
 	
     <div  class="page-container border-radius">
-        <h1>SRAVAN/SCE0209/isPrime</h1>
+        <h1>SRAVAN/SCE0209/isPerfect??</h1>
 		<form id="myForm">
 		<table>
 			<tr>
@@ -15,59 +15,70 @@
 				<td><input type="text" name="num" id="inputN"  class="border-radius"/></td>
 			</tr>
 			<tr>
-				<td> </td>
-				<td><input type="text" name="prime" id="prime"  class="border-radius" disabled/></td>
+				<td><label for=""></label></td>
+				<td><input type="text" name="result" id="result"  class="border-radius" disabled /></td>
 			</tr>
 			<tr>
 				<td></td>
 				<td>
 				<input type="button" value="Clear" class="border-radius" id="clear" />
-				<input type="submit" value="Check Prime" class="border-radius" /></td>
+				<input type="submit" value="Check Perfect" class="border-radius" /></td>
 				
 			</tr>
 		</table>
+		<div class="description" id="primes-container">
+		</div>
 		
 	</form>
 
 		<div class="description">
 			<h2>Description</h2>
-			<p>Check the given number is a prime or not</p>
+			<p>Check the given number is a Perfect number or not</p>
 		</div>
     </div>
 
 <script>
 "use strict";
 var input_n, result;
-function isPrime(num) {
-	var flag = true, i;
-	for (i = 2; i <= num / 2; i++) {
-
+function isPerfect(num) {
+	var sum = 0, i;
+	for (i = 1; i <= num / 2; i++) {
 		if (num % i === 0) {
-			flag = false;
-			break;
+			sum += i;
 		}
 	}
 
-	return flag;
+	if (sum === num ) {
+		return true;
+	} else {
+		return false;
+	}
 }
-function findNcr() {
-	var	n = isNaN(input_n.value) ? 0 : Number(input_n.value),
-		prime;
-	prime = isPrime(n);
+function check() {
 
-	result.value =  prime ? "Prime" : "Not a Prime";
+	var	n = isNaN(input_n.value) ? 0 : Number(input_n.value),
+		str = "";
+
+	if (isPerfect(n)) {
+		str = "Perfect Number"
+	} else {
+		str = "Not a Perfect Number"
+	}
+
+	result.value = str;
+
 	return false;
 }
 function clearNumbers() {
 	input_n.value = "";
-	result.value = "";
+	primesContainer.innerHTML = "";
 	input_n.focus();
 }
 function init() {
 	input_n = document.getElementById("inputN");
-	result = document.getElementById("prime");
+	result = document.getElementById("result");
 
-	document.getElementById("myForm").onsubmit = findNcr;
+	document.getElementById("myForm").onsubmit = check;
 	document.getElementById("clear").onclick = clearNumbers;
 
 }

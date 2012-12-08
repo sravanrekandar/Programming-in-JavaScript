@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html class="scenarios">
+<head>
+    <link href="../css/main.css" rel="stylesheet" type="text/css" />
+	<title>isStrong??</title>
+</head>
+<body>
+	
+    <div  class="page-container border-radius">
+        <h1>SRAVAN/SCE0216/isStrong??</h1>
+		<form id="myForm">
+		<table>
+			<tr>
+				<td><label for="num">n: </label></td>
+				<td><input type="text" name="num" id="inputN"  class="border-radius"/></td>
+			</tr>
+			<tr>
+				<td><label for="">is Strong:</label></td>
+				<td><input type="text" name="result" id="result"  class="border-radius" disabled /></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>
+				<input type="button" value="Clear" class="border-radius" id="clear" />
+				<input type="submit" value="Check" class="border-radius" /></td>
+				
+			</tr>
+		</table>
+		<div class="description" id="primes-container">
+		</div>
+		
+	</form>
+
+		<div class="description">
+			<h2>Description</h2>
+			<p>Check the given number is a Strong or not</p>
+		</div>
+    </div>
+
+<script>
+"use strict";
+var input_n, result;
+/*
+Strong number:-
+The sum of the factorials of digits of a number is equal to the original number. 
+Ex: n=145=> 1! + 4! + 5! = 1 + 24 + 120 = 145 
+so it is strong number. 
+*/
+function factorial(num) {
+	var fact = 1, i;
+	for (i = num; i > 0; i--) {
+		fact = fact * i;
+	}
+	return fact;
+}
+function isStrong(num) {
+	var sum = 0, i, rem;
+	for (i = Number(num); i > 0; i = Math.floor(i / 10)) {
+		rem = Math.floor(i % 10);
+		sum = sum + factorial(rem); 
+	}
+	if (sum === num ) {
+		return true;
+	} else {
+		return false;
+	}
+}
+function check() {
+
+	var	n = isNaN(input_n.value) ? 0 : Number(input_n.value),
+		str = "";
+
+	if (isStrong(n)) {
+		str = "Yes"
+	} else {
+		str = "No"
+	}
+
+	result.value = str;
+
+	return false;
+}
+function clearNumbers() {
+	input_n.value = "";
+	result.vlaue;
+	input_n.focus();
+}
+function init() {
+	input_n = document.getElementById("inputN");
+	result = document.getElementById("result");
+
+	document.getElementById("myForm").onsubmit = check;
+	document.getElementById("clear").onclick = clearNumbers;
+
+}
+window.onload = init;
+</script>
+</body>
+</html>

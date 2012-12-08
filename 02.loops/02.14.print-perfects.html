@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html class="scenarios">
+<head>
+    <link href="../css/main.css" rel="stylesheet" type="text/css" />
+	<title>Printing Perfects</title>
+</head>
+<body>
+	
+    <div  class="page-container border-radius">
+        <h1>SRAVAN/SCE0214/Printing Perfects</h1>
+		<form id="myForm">
+		<table>
+			<tr>
+				<td><label for="num">n: </label></td>
+				<td><input type="text" name="num" id="inputN"  class="border-radius"/></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>
+				<input type="button" value="Clear" class="border-radius" id="clear" />
+				<input type="submit" value="Check Perfect" class="border-radius" /></td>
+				
+			</tr>
+		</table>
+		<div class="description" id="perfect-container">
+		</div>
+		
+	</form>
+
+		<div class="description">
+			<h2>Description</h2>
+			<p>Printing Perfects</p>
+		</div>
+    </div>
+
+<script>
+"use strict";
+var input_n, perfectsContainer;
+function isPerfect(num) {
+	
+	var sum = 0, i;
+	for (i = 1; i <= num / 2; i++) {
+		if (num % i === 0) {
+			sum += i;
+		}
+	}
+
+	if (sum == num ) {
+		return true;
+	} else {
+		return false;
+	}
+}
+function check() {
+
+	var	n = isNaN(input_n.value) ? 0 : Number(input_n.value),
+		str = "",
+		i;
+	if (n > 10000) {
+		n = 1000;
+	}
+	for (i = 6; i <= n; i++) {
+		if (isPerfect(i)) {
+			str += i + " ";
+		}
+	}
+
+	perfectsContainer.innerHTML = str;
+
+	return false;
+}
+function clearNumbers() {
+	input_n.value = "";
+	primesContainer.innerHTML = "";
+	input_n.focus();
+}
+function init() {
+	input_n = document.getElementById("inputN");
+	perfectsContainer = document.getElementById("perfect-container");
+
+	document.getElementById("myForm").onsubmit = check;
+	document.getElementById("clear").onclick = clearNumbers;
+}
+window.onload = init;
+</script>
+</body>
+</html>
