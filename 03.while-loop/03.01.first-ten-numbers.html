@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html class="scenarios">
+<head>
+    <link href="../css/main.css" rel="stylesheet" type="text/css" />
+    <title>Printing first 10 numbers</title>
+</head>
+<body>
+    <div  class="page-container border-radius">
+        <h1>SRAVAN/SCE0301/Printing first 10 numbers</h1>
+        
+        <div class="description result" id="myDiv"></div>
+        
+        <div class="description">
+            <h2>Description</h2>
+            <p>Printing first 10 numbers</p>
+        </div>
+    </div>
+
+<script>
+"use strict";
+var myDiv;
+
+function printNumbers() {
+    myDiv = document.getElementById("myDiv");
+    var str = "",
+        i = 1;
+
+    // its all a small change to a for loop
+	// initialization moved to top of the loop
+    for (;i <= 10;) {
+            str += i + " ";
+            i++; // Incrementation placed inside the loop
+        }
+
+    myDiv.innerHTML = str;
+}
+
+window.onload = printNumbers;
+</script>
+</body>
+</html>

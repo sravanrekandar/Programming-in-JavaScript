@@ -2,12 +2,12 @@
 <html class="scenarios">
 <head>
     <link href="../css/main.css" rel="stylesheet" type="text/css" />
-	<title>isStrong??</title>
+	<title>Printing Perfects</title>
 </head>
 <body>
 	
     <div  class="page-container border-radius">
-        <h1>SRAVAN/SCE0215/isPallindrome??</h1>
+        <h1>SRAVAN/SCE0214/Printing Perfects</h1>
 		<form id="myForm">
 		<table>
 			<tr>
@@ -15,71 +15,66 @@
 				<td><input type="text" name="num" id="inputN"  class="border-radius"/></td>
 			</tr>
 			<tr>
-				<td><label for="">is Pallindrome:</label></td>
-				<td><input type="text" name="result" id="result"  class="border-radius" disabled /></td>
-			</tr>
-			<tr>
 				<td></td>
 				<td>
 				<input type="button" value="Clear" class="border-radius" id="clear" />
-				<input type="submit" value="Check" class="border-radius" /></td>
+				<input type="submit" value="Check Perfect" class="border-radius" /></td>
 				
 			</tr>
 		</table>
-		<div class="description" id="primes-container">
-		</div>	
+		<div class="description" id="perfect-container">
+		</div>
+		
 	</form>
 
-	<div class="description">
+		<div class="description">
 			<h2>Description</h2>
-			<p>Check the given number is a Pallindrome or not</p>
+			<p>Printing Perfects</p>
 		</div>
     </div>
 
 <script>
 "use strict";
-var input_n, result;
-function isPallindrome(num) {
-	var rev = 0, i, rem;
-	for (i = Number(num); i > 0; i = Math.floor(i / 10)) {
-		rem = Math.floor(i % 10);
-		rev = rev * 10 + rem;
-		console.log(i, rem, rev);
+var input_n, perfectsContainer;
+function isPerfect(num) {
+	var sum = 0, i;
+	for (i = 1; i <= num / 2; i++) {
+		if (num % i === 0) {
+			sum += i;
+		}
 	}
-	console.log(rev);
-	if (rev === num ) {
-		return true;
-	} else {
-		return false;
-	}
+
+	return (sum === num) ? true : false;
 }
 function check() {
 
 	var	n = isNaN(input_n.value) ? 0 : Number(input_n.value),
-		str = "";
-
-	if (isPallindrome(n)) {
-		str = "Yes"
-	} else {
-		str = "No"
+		str = "",
+		i;
+	if (n > 10000) {
+		n = 1000;
+	}
+	for (i = 6; i <= n; i++) {
+		if (isPerfect(i)) {
+			str += i + " ";
+		}
 	}
 
-	result.value = str;
+	perfectsContainer.innerHTML = str;
 
 	return false;
 }
 function clearNumbers() {
 	input_n.value = "";
-	primesContainer.innerHTML = "";
+	perfectsContainer.innerHTML = "";
 	input_n.focus();
 }
 function init() {
 	input_n = document.getElementById("inputN");
-	result = document.getElementById("result");
+	perfectsContainer = document.getElementById("perfect-container");
 
 	document.getElementById("myForm").onsubmit = check;
 	document.getElementById("clear").onclick = clearNumbers;
-
 }
 window.onload = init;
 </script>

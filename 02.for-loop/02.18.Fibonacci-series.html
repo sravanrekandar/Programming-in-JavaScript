@@ -2,12 +2,12 @@
 <html class="scenarios">
 <head>
     <link href="../css/main.css" rel="stylesheet" type="text/css" />
-	<title>isPerfect??</title>
+	<title>Fibonacci Series</title>
 </head>
 <body>
 	
     <div  class="page-container border-radius">
-        <h1>SRAVAN/SCE0209/isPerfect??</h1>
+        <h1>SRAVAN/SCE0218/Fibonacci Series</h1>
 		<form id="myForm">
 		<table>
 			<tr>
@@ -15,31 +15,28 @@
 				<td><input type="text" name="num" id="inputN"  class="border-radius"/></td>
 			</tr>
 			<tr>
-				<td><label for=""></label></td>
-				<td><input type="text" name="result" id="result"  class="border-radius" disabled /></td>
-			</tr>
-			<tr>
 				<td></td>
 				<td>
 				<input type="button" value="Clear" class="border-radius" id="clear" />
-				<input type="submit" value="Check Perfect" class="border-radius" /></td>
+				<input type="submit" value="Print Series" class="border-radius" /></td>
 				
 			</tr>
 		</table>
-		<div class="description" id="primes-container">
+		<div class="description" id="fibonacci-tainer">
 		</div>
 		
 	</form>
 
 		<div class="description">
 			<h2>Description</h2>
-			<p>Check the given number is a Perfect number or not</p>
+			<p>Fibonacci series</p>
+			<p>http://en.wikipedia.org/wiki/Fibonacci_number</p>
 		</div>
     </div>
 
 <script>
 "use strict";
-var input_n, result;
+var input_n, fibonacciTainer;
 function isPerfect(num) {
 	var sum = 0, i;
 	for (i = 1; i <= num / 2; i++) {
@@ -48,39 +45,42 @@ function isPerfect(num) {
 		}
 	}
 
-	if (sum === num ) {
-		return true;
-	} else {
-		return false;
-	}
+	return (sum === num) ? true : false;
 }
 function check() {
 
 	var	n = isNaN(input_n.value) ? 0 : Number(input_n.value),
-		str = "";
+		str = "",
+		i,
+		a = 0,
+		b = 1,
+		c;
+	if (n > 100) {	n = 100;}
+	
+	str = a + ", " + b;
+	for (i = 0; i < n; i++)
+	{
+		 c = a + b;
+		 a = b;
+		 b = c;
+		 str += ", " + c;
+	 }
 
-	if (isPerfect(n)) {
-		str = "Perfect Number"
-	} else {
-		str = "Not a Perfect Number"
-	}
-
-	result.value = str;
+	fibonacciTainer.innerHTML = str;
 
 	return false;
 }
 function clearNumbers() {
 	input_n.value = "";
-	primesContainer.innerHTML = "";
+	fibonacciTainer.innerHTML = "";
 	input_n.focus();
 }
 function init() {
 	input_n = document.getElementById("inputN");
-	result = document.getElementById("result");
+	fibonacciTainer = document.getElementById("fibonacci-tainer");
 
 	document.getElementById("myForm").onsubmit = check;
 	document.getElementById("clear").onclick = clearNumbers;
-
 }
 window.onload = init;
 </script>

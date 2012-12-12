@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html class="scenarios">
+<head>
+    <link href="../css/main.css" rel="stylesheet" type="text/css" />
+	<title>LCM (Least Common Multiple)</title>
+</head>
+<body>
+	
+    <div  class="page-container border-radius">
+        <h1>SRAVAN/SCE0220/LCM (Least Common Multiple)</h1>
+		<form id="myForm">
+		<table>
+			<tr>
+				<td><label for="num">x: </label></td>
+				<td><input type="text" name="num" id="inputX"  class="border-radius"/></td>
+			</tr>
+			<tr>
+				<td><label for="num">y: </label></td>
+				<td><input type="text" name="num" id="inputY"  class="border-radius"/></td>
+			</tr>
+			<tr>
+				<td><label for="">LCM:</label></td>
+				<td><input type="text" name="result" id="result"  class="border-radius" disabled /></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>
+				<input type="button" value="Clear" class="border-radius" id="clear" />
+				<input type="submit" value="Find LCM" class="border-radius" /></td>
+				
+			</tr>
+		</table>
+		<div class="description" id="primes-container">
+		</div>	
+	</form>
+
+	<div class="description">
+			<h2>Description</h2>
+			<p>Find LCM (Least Common Multiple) of the given two numbers</p>
+			<p>http://www.purplemath.com/modules/lcm_gcf.htm</p>
+			<p>http://en.wikipedia.org/wiki/Least_common_multiple</p>
+		</div>
+    </div>
+
+<script>
+"use strict";
+var input_x, input_y, result;
+function gcd(a, b) {
+	var temp;
+
+	while (b !== 0) {
+		temp = b;
+		b = a % b;
+		a = temp;
+	}
+	return a;
+}
+function lcm(a, b) {
+	return (a * b) / gcd(a, b);
+}
+function check() {
+
+	var	x = isNaN(input_x.value) ? 0 : Number(input_x.value),
+		y = isNaN(input_y.value) ? 0 : Number(input_y.value);
+
+	result.value = lcm(x, y);
+	return false;
+}
+function clearNumbers() {
+	input_x.value = "";
+	input_y.value = "";
+	result.value = "";
+	input_x.focus();
+}
+function init() {
+	input_x = document.getElementById("inputX");
+	input_y = document.getElementById("inputY");
+	result = document.getElementById("result");
+
+	document.getElementById("myForm").onsubmit = check;
+	document.getElementById("clear").onclick = clearNumbers;
+
+}
+window.onload = init;
+</script>
+</body>
+</html>
