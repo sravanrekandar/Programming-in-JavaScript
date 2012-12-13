@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html class="scenarios">
+<head>
+    <link href="../css/main.css" rel="stylesheet" type="text/css" />
+	<title>Pascal's_triangle</title>
+</head>
+<body>
+	
+    <div  class="page-container border-radius">
+        <h1>SRAVAN/SCE0220/Pascal's_triangle</h1>
+		<form id="myForm">
+		<table>
+			<tr>
+				<td><label for="num">Number of Rows: </label></td>
+				<td><input type="text" name="num" id="inputN"  class="border-radius"/></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>
+				<input type="button" value="Clear" class="border-radius" id="clear" />
+				<input type="submit" value="Print Pascal Triangle" class="border-radius" /></td>
+				
+			</tr>
+		</table>
+		<div class="description result" id="pascal-container" style="line-height: 1.5em;">
+		</div>
+	</form>
+
+		<div class="description">
+			<h2>Description</h2>
+			<p>Pascal's triangle</p>
+			<p>http://en.wikipedia.org/wiki/Pascal's_triangle</p>
+		</div>
+    </div>
+
+<script>
+/*
+	USING IIFE - Immediate Invoking Function Expression
+	a.k.a IIF - Immediate Invoking Function
+	
+	Eg: 
+	(function () {
+	
+		//Your code goes here
+		
+	}());
+*/
+
+(function () {
+
+	"use strict";
+	var input_n, pascalContainer;
+
+	function factorial(n) {
+		var fact = 1, i;
+		for (i = n; i > 0; i--) {
+			fact = fact * i;
+		}
+		return fact;
+	}
+
+	function check() {
+
+		var	n = isNaN(input_n.value) ? 0 : Number(input_n.value),
+			str = "",
+			i,
+			c,
+			t,
+			space = " ";
+		if (n > 20) {
+			n = 20;
+			input_n.value = n;
+		}
+
+		for (i = 0; i < n; i++) {
+			space = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+			for (c = 0; c <= (n - i - 2); c++) {
+				str += space;
+			}
+
+			for (c = 0; c <= i; c++) {
+				t = factorial(i) / (factorial(c) * factorial(i - c));
+				space = t < 10 ? "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" :
+						t < 100 ? "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" :
+								t < 1000 ? "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" : "&nbsp;&nbsp;&nbsp;";
+				str +=  t + space;
+			}
+			str += "<br />";
+		}
+
+		pascalContainer.innerHTML = str;
+
+		return false;
+	}
+	function clearNumbers() {
+		input_n.value = "";
+		pascalContainer.innerHTML = "";
+		input_n.focus();
+	}
+
+
+	input_n = document.getElementById("inputN");
+	pascalContainer = document.getElementById("pascal-container");
+
+	document.getElementById("myForm").onsubmit = check;
+	document.getElementById("clear").onclick = clearNumbers;
+}());
+</script>
+</body>
+</html>
