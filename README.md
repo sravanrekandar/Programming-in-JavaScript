@@ -10,7 +10,6 @@ I did not provide any explanations since there are many tutorial sites available
 If you are a fresher, I recommend to go through the theory and come back here.
 
 Rather than concentrating on the features of the JavaScript, these exercises concentrate on the general structure of the programming.
-All these excersises are compiled in JSLINT.COM, so you can assume this is a standard way of JS programming.
 
 I will keep on updating with new excersises.
 
