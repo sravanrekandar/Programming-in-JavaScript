@@ -55,7 +55,10 @@ function check() {
 		a = 0,
 		b = 1,
 		c;
-	if (n > 100) {	n = 100;}
+	if (n > 100) {	
+		n = 100;
+		input_n.value = n;
+	}
 	
 	str = a + ", " + b;
 	for (i = 0; i < n; i++)

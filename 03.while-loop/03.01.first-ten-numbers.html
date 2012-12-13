@@ -17,25 +17,21 @@
     </div>
 
 <script>
-"use strict";
-var myDiv;
+(function () {
+	"use strict";
+	var myDiv = document.getElementById("myDiv"),
+		str = "",
+		i = 1;
 
-function printNumbers() {
-    myDiv = document.getElementById("myDiv");
-    var str = "",
-        i = 1;
-
-    // its all a small change to a for loop
+	// its all a small change to a for loop
 	// initialization moved to top of the loop
-    for (;i <= 10;) {
-            str += i + " ";
-            i++; // Incrementation placed inside the loop
-        }
+	for (;i <= 10;) {
+			str += i + " ";
+			i++; // Incrementation placed inside the loop
+		}
 
-    myDiv.innerHTML = str;
-}
-
-window.onload = printNumbers;
+	myDiv.innerHTML = str;
+}());
 </script>
 </body>
 </html>

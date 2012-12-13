@@ -37,46 +37,45 @@
     </div>
 
 <script>
-"use strict";
-var input_n, result;
-function isPallindrome(num) {
-	var sum = 0, temp = num;
+(function () {
+	"use strict";
+	var input_n, result;
+	function isPallindrome(num) {
+		var sum = 0, temp = num;
 
-    while (num > 0) {
-        sum = sum * 10 + (num % 10);
-        num = Math.floor(num / 10);
-    }
-	return (sum === temp) ? true : false;
-}
-function check() {
+		while (num > 0) {
+			sum = sum * 10 + (num % 10);
+			num = Math.floor(num / 10);
+		}
+		return (sum === temp) ? true : false;
+	}
+	function check() {
 
-	var	n = isNaN(input_n.value) ? 0 : Number(input_n.value),
-		str = "";
+		var	n = isNaN(input_n.value) ? 0 : Number(input_n.value),
+			str = "";
 
-	if (isPallindrome(n)) {
-		str = "Yes";
-	} else {
-		str = "No";
+		if (isPallindrome(n)) {
+			str = "Yes";
+		} else {
+			str = "No";
+		}
+
+		result.value = str;
+
+		return false;
+	}
+	function clearNumbers() {
+		input_n.value = "";
+		result.value = "";
+		input_n.focus();
 	}
 
-	result.value = str;
-
-	return false;
-}
-function clearNumbers() {
-	input_n.value = "";
-	result.value = "";
-	input_n.focus();
-}
-function init() {
 	input_n = document.getElementById("inputN");
 	result = document.getElementById("result");
 
 	document.getElementById("myForm").onsubmit = check;
 	document.getElementById("clear").onclick = clearNumbers;
-
-}
-window.onload = init;
+}());
 </script>
 </body>
 </html>

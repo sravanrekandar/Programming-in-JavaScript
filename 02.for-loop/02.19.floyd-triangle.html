@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html class="scenarios">
+<head>
+    <link href="../css/main.css" rel="stylesheet" type="text/css" />
+	<title>Floyd's triangle</title>
+</head>
+<body>
+	
+    <div  class="page-container border-radius">
+        <h1>SRAVAN/SCE0219/Floyd's triangle</h1>
+		<form id="myForm">
+		<table>
+			<tr>
+				<td><label for="num">Number of Rows: </label></td>
+				<td><input type="text" name="num" id="inputN"  class="border-radius"/></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>
+				<input type="button" value="Clear" class="border-radius" id="clear" />
+				<input type="submit" value="Print Floyd Triangle" class="border-radius" /></td>
+				
+			</tr>
+		</table>
+		<div class="description result" id="floyd-container" style="line-height: 1.5em;">
+		</div>
+		
+	</form>
+
+		<div class="description">
+			<h2>Description</h2>
+			<p>Floyd's triangle</p>
+			<p>http://en.wikipedia.org/wiki/Floyd's_triangle</p>
+		</div>
+    </div>
+
+<script>
+/*
+	USING IIFE - Immediate Invoking Function Expression
+	a.k.a IIF - Immediate Invoking Function
+	
+	Eg: 
+	(function () {
+	
+		//Your code goes here
+		
+	}());
+*/
+
+(function () {
+
+	"use strict";
+	var input_n, floydContainer;
+
+	function check() {
+
+		var	n = isNaN(input_n.value) ? 0 : Number(input_n.value),
+			str = "",
+			i,
+			a = 1,
+			c,
+			space = " ";
+		if (n > 20) {
+			n = 20;
+			input_n.value = n;
+		}
+
+		for (i = 1; i <= n; i++) {
+			for (c = 1; c <= i; c++) {
+				space = a < 10 ? "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" :
+						a < 100 ? "&nbsp;&nbsp;&nbsp;" :
+								a < 1000 ? "&nbsp;" : "";
+
+				str += a + space;
+				a++;
+			}
+			str += "<br />";
+		}
+
+		floydContainer.innerHTML = str;
+
+		return false;
+	}
+	function clearNumbers() {
+		input_n.value = "";
+		floydContainer.innerHTML = "";
+		input_n.focus();
+	}
+
+
+	input_n = document.getElementById("inputN");
+	floydContainer = document.getElementById("floyd-container");
+
+	document.getElementById("myForm").onsubmit = check;
+	document.getElementById("clear").onclick = clearNumbers;
+}());
+</script>
+</body>
+</html>

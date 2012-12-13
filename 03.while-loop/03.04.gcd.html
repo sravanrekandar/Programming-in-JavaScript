@@ -42,42 +42,41 @@
     </div>
 
 <script>
-"use strict";
-var input_x, input_y, result;
-function gcd(a, b) {
-	var temp;
+(function () {
+	"use strict";
+	var input_x, input_y, result;
+	function gcd(a, b) {
+		var temp;
 
-	while (b !== 0) {
-		temp = b;
-		b = a % b;
-		a = temp;
+		while (b !== 0) {
+			temp = b;
+			b = a % b;
+			a = temp;
+		}
+		return a;
 	}
-	return a;
-}
-function check() {
+	function check() {
 
-	var	x = isNaN(input_x.value) ? 0 : Number(input_x.value),
-		y = isNaN(input_y.value) ? 0 : Number(input_y.value);
+		var	x = isNaN(input_x.value) ? 0 : Number(input_x.value),
+			y = isNaN(input_y.value) ? 0 : Number(input_y.value);
 
-	result.value = gcd(x, y);
-	return false;
-}
-function clearNumbers() {
-	input_x.value = "";
-	input_y.value = "";
-	result.value = "";
-	input_x.focus();
-}
-function init() {
+		result.value = gcd(x, y);
+		return false;
+	}
+	function clearNumbers() {
+		input_x.value = "";
+		input_y.value = "";
+		result.value = "";
+		input_x.focus();
+	}
+
 	input_x = document.getElementById("inputX");
 	input_y = document.getElementById("inputY");
 	result = document.getElementById("result");
 
 	document.getElementById("myForm").onsubmit = check;
 	document.getElementById("clear").onclick = clearNumbers;
-
-}
-window.onload = init;
+}());
 </script>
 </body>
 </html>

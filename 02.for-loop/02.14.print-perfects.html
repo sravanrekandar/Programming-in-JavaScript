@@ -51,9 +51,11 @@ function check() {
 	var	n = isNaN(input_n.value) ? 0 : Number(input_n.value),
 		str = "",
 		i;
-	if (n > 10000) {
-		n = 1000;
+	if (n > 10000) {	
+		n = 10000;
+		input_n.value = n;
 	}
+	
 	for (i = 6; i <= n; i++) {
 		if (isPerfect(i)) {
 			str += i + " ";

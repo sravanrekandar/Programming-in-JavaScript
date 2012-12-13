@@ -48,11 +48,11 @@ function isPrime(num) {
 
 	return flag;
 }
-function findNcr() {
+function check() {
 	var	n = isNaN(input_n.value) ? 0 : Number(input_n.value),
 		str = "",
 		i;
-
+	
 	for (i = 2; i <= n; i++) {
 		if (isPrime(i)) {
 			str += i + " ";
@@ -71,7 +71,7 @@ function init() {
 	input_n = document.getElementById("inputN");
 	primesContainer = document.getElementById("primes-container");
 
-	document.getElementById("myForm").onsubmit = findNcr;
+	document.getElementById("myForm").onsubmit = check;
 	document.getElementById("clear").onclick = clearNumbers;
 
 }

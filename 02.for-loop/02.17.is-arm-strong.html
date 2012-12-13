@@ -62,6 +62,11 @@ function check() {
 	var	n = isNaN(input_n.value) ? 0 : Number(input_n.value),
 		str = "";
 
+	if (n > 10000) {	
+		n = 10000;
+		input_n.value = n;
+	}
+	
 	if (isArmStrong(n)) {
 		str = "Yes";
 	} else {
