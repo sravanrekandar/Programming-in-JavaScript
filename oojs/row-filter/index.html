@@ -1,0 +1,109 @@
+<!DOCYTPE html>
+<html>
+<head>
+	<title>Row Filter</title>
+	<style>
+		table.books {
+			border: 1px solid #DFDFDF;
+		}
+		table.books th, table.books td {
+			padding: 3px;
+			border: 1px solid #DFDFDF;
+		}
+	</style>
+</head>
+<body>
+	<table class="books">
+		<thead>
+			<tr><th>Name</th>
+				<th>Category</th>
+				<th>Author</th>
+				<th>Price (Rs.)</th>
+			</tr>
+		</thead>
+		<tbody class="book-details">
+			<tr data-category = "fiction">
+				<td>The Oath of the Vayuputras: Shiva Trilogy 3</td>
+				<td>Fiction</td>
+				<td>Amish</td>
+				<td><input type="text" value=245 disabled/></td>
+			</tr>
+			<tr data-category = "non-fiction">
+				<td>Market Your Way to Growth: 8 Ways to Win</td>
+				<td>Non Fiction</td>
+				<td>Philip Kotler</td>
+				<td><input type="text" value=385 disabled/></td>
+			</tr>
+			<tr data-category = "non-fiction">
+				<td>Chanakya's New Manifesto: To Resolve the Crisis within India </td>
+				<td>Non Fiction</td>
+				<td>Pavan K. Varma</td>
+				<td><input type="text" value=221 disabled/></td>
+			</tr>
+			<tr data-category = "fiction">
+				<td>I Too Had a Love Story </td>
+				<td>Fiction</td>
+				<td>Ravinder Singh</td>
+				<td><input type="text" value=83 disabled/></td>
+			</tr>
+			<tr data-category = "fiction">
+				<td>Chanakya's Chant</td>
+				<td>Fiction</td>
+				<td>Ashwin Sanghi</td>
+				<td><input type="text" value=160 disabled/></td>
+			</tr>
+			<tr data-category = "non-fiction">
+				<td>Life Is What You Make It </td>
+				<td>Non Fiction</td>
+				<td>Preeti Shenoy</td>
+				<td><input type="text" value=58 disabled/></td>
+			</tr>
+			<tr data-category = "non-fiction">
+				<td>Manuscript Found in Accra </td>
+				<td>Fiction</td>
+				<td>Paulo Coelho</td>
+				<td><input type="text" value=194 disabled/></td>
+			</tr>
+		</tbody>
+		</tfoot>
+		</tfoot>
+	</table>
+	<div class="results">
+	</div>
+	
+	<script src="../../scripts/jquery-1.8.3.min.js"></script>
+	<script>
+		$(function(){
+			// get the rows
+			var rows = $('table.books tbody tr');
+			var categoryList = [];
+			var i, rowCategory, currentCategory, sum;
+			for(i = 0, len = rows.length; i < len; i++){
+				rowCategory = $(rows[i]).attr('data-category');
+				//console.log(rowCategory);
+				if($.inArray(rowCategory, categoryList) === -1){
+					categoryList.push(rowCategory);
+				}	
+			}
+			//console.log(categoryList);
+			
+			for(i = 0, len = categoryList.length; i < len; i++) {
+				currentCategory = categoryList[i];
+				sum = 0;
+				$('table.books tbody tr[data-category=' + currentCategory + '] input').each(function(idx){
+					//console.log(this.value);
+					sum += parseInt(this.value, 10);
+				});
+				
+				//console.log(sum);
+				// Creating and appending new result to div.results
+				$("<div />")
+				.addClass(currentCategory)
+				.append('<h3>' + currentCategory + '</h3')
+				.append('<p> Total: ' + sum + '</p>')
+				.appendTo('div.results');
+			}	
+		});		
+	</script>
+</body>
+</html>
