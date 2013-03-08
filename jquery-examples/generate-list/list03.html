@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SRAVAN/ 20130308 / Generate List - 03</title>
+
+	<style>
+		.description {
+			color: #CCCCFF;
+			font-variation: uppercase;
+		}
+		.my-list {
+			padding: 10px;
+			margin: 10px;
+			list-style-type: decimal;
+		}
+	</style>
+</head>
+<body>
+	<p class="description">
+		SRAVAN/ 20130308 / Generate List - 03
+	</p>
+	<ul class="my-list">
+		<!-- <li>Item</li> -->
+	</ul>
+	<input class="add-item" type="button" value="Add" />
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>	<script>
+		$(document).ready(function (){
+
+			$('.add-item').click(addElement);
+						
+			function addElement() {
+				//create a new 'li' and append some text
+				var newElement = $('<li></li>').text('New Item');
+				
+				//append the new element to the list
+				$('ul.my-list').append(newElement);
+				
+			} // End: addElement()
+			
+		}); // End: Document Ready
+	</script>
+</body>
+</html>
