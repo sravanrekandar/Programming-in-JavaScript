@@ -1,6 +1,3 @@
-js-steps
-========
-
 The Basic Programming in JavaScript.
 
 If you can be strong in the basic programming, you can be flexible with the advanced topics.
