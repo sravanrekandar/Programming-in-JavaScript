@@ -1,0 +1,19 @@
+/* Styles go here */
+
+@import url('http://getbootstrap.com/dist/css/bootstrap.css');
+#chart {
+    height: 300px;
+    width: 90%; 
+    position: relative;
+    border: double #ccc;
+}
+.col{
+   position: absolute;
+    background-color: #ccc;
+    text-align: center;
+}
+.value {
+    background-color: #fff;
+    display: block;
+    margin-top: 2px;
+}
